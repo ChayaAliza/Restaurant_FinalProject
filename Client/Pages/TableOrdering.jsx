@@ -15,12 +15,6 @@ function TableOrdering() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const currentHour = new Date().getHours();
-  //   const initialTime = currentHour < 11 ? '11:00' : `${String(currentHour).padStart(2, '0')}:00`;
-  //   setTime(initialTime);
-  //   setDate(new Date().toISOString().split('T')[0]);
-  // }, []);
 
   useEffect(() => {
     const currentDate = new Date();
@@ -31,7 +25,6 @@ function TableOrdering() {
     if (currentHour < 11) {
       initialTime = '11:00';
     } else {
-      // מעגל לרבע השעה הקרוב
       const roundedMinute = Math.round(currentMinute / 15) * 15;
       const adjustedHour = roundedMinute === 60 ? currentHour + 1 : currentHour;
       const adjustedMinute = roundedMinute === 60 ? 0 : roundedMinute;

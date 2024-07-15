@@ -3,14 +3,13 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 
-// ניתן להשתמש ב-body-parser כדי לעבוד עם JSON
 router.use(bodyParser.json());
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'chaia05276616@gmail.com', // כתובת המייל שלך
-        pass: 'izwh pqlg scey bpvl' // הסיסמה שלך
+        user: 'chaia05276616@gmail.com', 
+        pass: 'izwh pqlg scey bpvl' 
     },
     tls: {
         rejectUnauthorized: false
@@ -18,13 +17,12 @@ const transporter = nodemailer.createTransport({
 });
 
 
-// שליחת הפניה למייל של המסעדה
 router.post('/', async (req, res) => {
     const { name, phone, email, reason, message } = req.body;
 
     const mailOptions = {
-        from: email, // האימייל של השולח
-        to: 'chaia05276616@gmail.com', // כתובת המייל של המסעדה
+        from: email,   
+        to: 'chaia05276616@gmail.com', 
         subject: 'פנייה חדשה מהאתר',
         text: `
         שם: ${name}

@@ -19,9 +19,9 @@ async function createDish(dishName, idDishTypes, price, remarks, vegan, gluten, 
         );
         
         const insertedId = result.insertId;
-        const insertedDish = await getDish(insertedId); // קריאה נוספת לקבלת המנה שהוכנסה
+        const insertedDish = await getDish(insertedId); 
         
-        return { ...insertedDish, imageUrl }; // מחזיר את המנה עם כתובת התמונה
+        return { ...insertedDish, imageUrl }; 
     } catch (err) {
         console.error('Error creating dish:', err);
         throw err;

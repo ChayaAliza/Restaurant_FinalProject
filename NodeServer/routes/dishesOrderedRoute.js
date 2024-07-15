@@ -13,11 +13,11 @@ router.post('/', verifyPermissions([2 ,3]) , async (req, res) => {
 
 
 
-router.delete('/:orderId/:dishId', verifyPermissions([2 ,3]) , async (req, res) => { //דואג למחיקת מנה מהזמנה
+router.delete('/:orderId/:dishId', verifyPermissions([2 ,3]) , async (req, res) => { 
     const { orderId, dishId } = req.params;
     try {
         await deleteByOrderAndDish(orderId, dishId);
-        res.sendStatus(204); // או כל תשובת הצלחה אחרת
+        res.sendStatus(204);
     } catch (error) {
         console.error('Error deleting dish from order:', error);
         res.status(500).send('Failed to delete dish from order');

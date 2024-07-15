@@ -6,11 +6,11 @@ import DishPopup from '../Components/DishPopup';
 import LoginForm from '../Pages/LoginForm';
 import { userContext } from '../Components/App';
 import Cart from '../Components/Cart';
-import OrderModal from '../Components/OrderModal'; // הוסף יבוא לרכיב החלונית החדש
+import OrderModal from '../Components/OrderModal'; 
 
 function Pickup() {
   const location = useLocation();
-  const navigate = useNavigate(); // הוסף את useNavigate
+  const navigate = useNavigate(); 
   const { orderingTableId, date, time } = location.state || {};
   const [dishes, setDishes] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -18,27 +18,14 @@ function Pickup() {
   const [selectedDish, setSelectedDish] = useState(null);
   const [orderId, setOrderId] = useState(null);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false); // הוסף מצב לחלונית החדשה
+  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false); 
   const { user } = useContext(userContext);
-
-  // useEffect(() => {
-  //   fetch('http://localhost:3000/dishes')
-  //     .then((res) => res.json())
-  //     .then((dishes) => {
-  //       setDishes(dishes);
-  //       if (dishes.length > 0) {
-  //         setSelectedCategory(dishes[0].dishType);
-  //       }
-  //     })
-  //     .catch((error) => console.error('Error fetching dishes:', error));
-  // }, []);
 
 
   useEffect(() => {
     const fetchData = async () => {
 
       try {
-        // Fetch dishes
         const dishesResponse = await fetch('http://localhost:3000/dishes');
         const dishesData = await dishesResponse.json();
         setDishes(dishesData);
@@ -46,7 +33,6 @@ function Pickup() {
           setSelectedCategory(dishesData[0].dishType);
         }
 
-        // Fetch last open order if user is logged in
         if (user && user.id && user.idUserType == 3) {
           const orderResponse = await fetch(`http://localhost:3000/fullCart/user/${user.id}/last-open`, {
             credentials: 'include'

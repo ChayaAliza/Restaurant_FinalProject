@@ -5,7 +5,6 @@ import Footer from '../Components/Footer';
 
 function Menu() {
   const [dishes, setDishes] = useState([]);
-  // const [originalDishes, setOriginalDishes] = useState([]);
 
 
   useEffect(() => {
@@ -13,7 +12,6 @@ function Menu() {
       .then((res) => res.json())
       .then((dishes) => {
         setDishes(dishes);
-        // setOriginalDishes(dishes);
       })
       .catch((error) => console.error('Error fetching dishes:', error));
   }, []);

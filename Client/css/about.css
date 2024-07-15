@@ -1,9 +1,9 @@
 .about-container {
     margin-top: 4%;
     padding: 20px;
-    background-color: #f7f4ea; /* צבע רקע */
+    background-color: #f7f4ea; 
    
-    font-family: 'Alef', sans-serif; /* משפחת הגופן */
+    font-family: 'Alef', sans-serif; 
   }
   
   .about-content {

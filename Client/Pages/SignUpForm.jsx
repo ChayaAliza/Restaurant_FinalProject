@@ -71,7 +71,7 @@ function SignUpForm({ toggleModal, switchToLogin }) {
                 alert('אירעה שגיאה בהרשמה. אנא נסה שנית.');
             })
             .finally(() => {
-                toggleModal(); // סגירת המודל לאחר ניסיון ההרשמה
+                toggleModal(); 
             });
     };
 

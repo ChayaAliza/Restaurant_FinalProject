@@ -21,7 +21,7 @@ const Waiters = () => {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    credentials: 'include' // Include credentials for cookies, authorization headers, etc.
+                    credentials: 'include' 
                 });
                 if (!response.ok) {
                     throw new Error(`Error: ${response.status}`);

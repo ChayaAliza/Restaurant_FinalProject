@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const verifyPermissions = require('../middleware/verifyPermissions');
-const { getLastOpenOrderForUser} = require('../controllers/fullCartController'); // עדכן את שם הקובץ כאן
+const { getLastOpenOrderForUser} = require('../controllers/fullCartController'); 
 router.use(express.json());
 
 router.get('/user/:userId/last-open', verifyPermissions([3]), async (req, res) => {

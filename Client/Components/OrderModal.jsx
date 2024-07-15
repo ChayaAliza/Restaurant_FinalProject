@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/orderModal.css'; // ייבוא קובץ CSS עבור הסטיילינג של החלונית
+import '../css/orderModal.css'; 
 
 const OrderModal = ({ onClose }) => {
   return (

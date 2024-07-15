@@ -3,39 +3,17 @@ const pool = require('../DB');
 async function getOrderingFood(id) {
     try {
         const [rows] = await pool.query('SELECT * FROM orderingFood WHERE id=?', [id]);
-        return rows[0] || null; // Graceful handling of null response
+        return rows[0] || null; 
     } catch (err) {
         console.log(err);
-        throw err; // Rethrow the error for consistent error handling
+        throw err; 
     }
 }
-// async function getLastOrderingFood(numTable) {
-//     try {
-//         const [rows] = await pool.query(`
-//             SELECT ofd.id, ofd.userId, ofd.idOrderingTable, ofd.payment, ofd.statusOrder,ofd.payUp
-//             FROM orderingFood ofd
-//             JOIN orderingTables ot ON ofd.idOrderingTable = ot.id
-//             WHERE ot.numTable = ?
-//               AND ot.orderDate = CURDATE()
-//               AND ot.orderTime >= DATE_SUB(CURTIME(), INTERVAL 1 HOUR)
-//               AND ot.orderTime <= CURTIME()
-//               AND ofd.payUp != 1
-//             ORDER BY ofd.id DESC
-//             LIMIT 1
-//         `, [numTable]);
-//         console.log(numTable)
-//         return rows.length > 0 ? rows[0] : null;
-//     } catch (error) {
-//         console.error('Error executing SQL query:', error);
-//         throw error;
-//     }
-// }
+
 async function getLastOrderingFood(numTable) {
     try {
-        // Get current date
         const currentDate = new Date();
         
-        // Format current date as YYYY-MM-DD
         const formattedDate = currentDate.toISOString().split('T')[0];
 
         const [rows] = await pool.query(`

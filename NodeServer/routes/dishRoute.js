@@ -7,10 +7,10 @@ router.use(express.json());
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'pic'); // ספריית היעד של הקבצים
+    cb(null, 'pic');
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname); // שם הקובץ ששומר בספרייה
+    cb(null, Date.now() + '-' + file.originalname);  
   },
 });
 
@@ -21,7 +21,7 @@ router.post('/', verifyPermissions([1]), upload.single('image'), async (req, res
     const { dishName, idDishTypes, price, remarks, vegan, gluten } = req.body;
     const imageUrl = req.file ? req.file.filename : null;
     const response = await createDish(dishName, idDishTypes, price, remarks, vegan, gluten, imageUrl);
-    const singleDish = await getSingle(response.id); // שינוי: שימוש ב-id מהתגובה
+    const singleDish = await getSingle(response.id);
     console.log('Single Dish:', singleDish);
     res.status(201).json(singleDish);
   } catch (error) {
